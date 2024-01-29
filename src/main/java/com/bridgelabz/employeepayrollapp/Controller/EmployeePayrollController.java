@@ -23,6 +23,7 @@ public class EmployeePayrollController {
         List<EmployeePayrollData> empDataList=null;
         empDataList=iEmployeePayrollService.getEmployeePayrollData();
         ResponseDTO responseDTO = new ResponseDTO("Get Call Success",empDataList); // Response DTO
+        responseDTO.getData();
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
 
