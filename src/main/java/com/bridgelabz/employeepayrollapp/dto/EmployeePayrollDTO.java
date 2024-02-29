@@ -1,9 +1,7 @@
 package com.bridgelabz.employeepayrollapp.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.ToString;
 
 import java.time.LocalDate;
@@ -17,15 +15,21 @@ public @ToString class EmployeePayrollDTO {
     @Min(value = 500, message = "Min Wage should be more than 500")
     public long salary;
 
+    @Pattern(regexp = "male|female", message = "Gender needs to be male or female")
     public String gender;
 
     @JsonFormat(pattern = "dd MMM yyyy")
+    @NotNull(message = "startDate should not be empty")
+    @PastOrPresent(message = "Data should not be Past or Future")
     public LocalDate startDate;
 
+    @NotBlank(message = "Note cannot be empty")
     public String note;
 
+    @NotBlank(message = "Profile Pic cannot be empty")
     public String profilePic;
 
+    @NotNull(message = "Department should not be empty")
     public List<String> departments;
 
 }
