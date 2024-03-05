@@ -31,7 +31,12 @@ public class EmployeePayrollService implements IEmployeePayrollService{
                         + " Doesn't Exists...!"));
     }
 
-        //return employeePayrollDataList.get(empId-1);
+    @Override
+    public List<EmployeePayrollData> getEmployeesByDepartment(String department) {
+        return employeePayrollRepository.findEmployeesByDepartment(department);
+    }
+
+    //return employeePayrollDataList.get(empId-1);
 
     @Override
     public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
